@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Prototyped with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+These mockups were prototyped with [Create React App](https://github.com/facebook/create-react-app).
 
 Steps:
 1. Install [Node.js](https://nodejs.org/en/download).
