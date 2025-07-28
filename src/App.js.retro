@@ -1,0 +1,259 @@
+/*import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+*/
+import React, { useState, useMemo } from 'react';
+import { ChevronDown, Gift, MapPin, Briefcase, Hash, IndianRupee, Users, Building } from 'lucide-react';
+
+// --- Mock Initial Data ---
+const initialDonations = [
+    { id: 1, name: 'Ravi Sharma', bitsId: '2000A7PS007P', role: 'VP of Engineering, Google', location: 'Mountain View, USA', amount: 250000, region: 'International', department: 'CS' },
+    { id: 2, name: 'Priya Singh', bitsId: '2000B3A3123P', role: 'Founder, Ather Energy', location: 'Bengaluru, India', amount: 200000, region: 'South', department: 'EEE' },
+    { id: 3, name: 'Amit Patel', bitsId: '2000A1PS234P', role: 'Director of Operations, Tata Motors', location: 'Pune, India', amount: 150000, region: 'West', department: 'Mech' },
+    { id: 4, name: 'Sunita Reddy', bitsId: '2000A4PS456P', role: 'Lead Scientist, Dr. Reddy\'s Labs', location: 'Hyderabad, India', amount: 175000, region: 'South', department: 'Chem' },
+    { id: 5, name: 'Vikram Kumar', bitsId: '2000A7PS010P', role: 'Principal SDE, Amazon', location: 'Seattle, USA', amount: 225000, region: 'International', department: 'CS' },
+];
+
+// --- Helper Components ---
+const Card = ({ children, className = '' }) => (
+    <div className={`bg-[#fbf1c7] border border-[#928374] rounded-lg shadow-[4px_4px_0px_#928374] p-6 ${className}`}>
+        {children}
+    </div>
+);
+
+const LeaderboardItem = ({ rank, name, amount, icon }) => (
+    <li className="flex items-center justify-between py-2 border-b border-[#d5c4a1] last:border-b-0">
+        <div className="flex items-center space-x-3">
+            <span className="text-lg font-bold text-[#7c6f64]">{rank}.</span>
+            <div className="flex items-center space-x-2">
+               {icon}
+               <span className="font-medium text-[#3c3836]">{name}</span>
+            </div>
+        </div>
+        <span className="font-bold text-[#b57614] flex items-center"><IndianRupee size={16} className="mr-1"/>{amount.toLocaleString('en-IN')}</span>
+    </li>
+);
+
+// --- Main App Component ---
+export default function App() {
+    const [donations, setDonations] = useState(initialDonations);
+    const [formData, setFormData] = useState({
+        name: '',
+        bitsId: '',
+        role: '',
+        location: '',
+        amount: '',
+        region: 'North',
+        department: 'CS',
+    });
+    const [showForm, setShowForm] = useState(true);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!formData.name || !formData.amount || !formData.bitsId) {
+            alert('Please fill in your Name, BITS ID, and Donation Amount.');
+            return;
+        }
+        const newDonation = {
+            id: donations.length + 1,
+            ...formData,
+            amount: parseInt(formData.amount, 10),
+        };
+        setDonations([newDonation, ...donations]);
+        setFormData({ name: '', bitsId: '', role: '', location: '', amount: '', region: 'North', department: 'CS' });
+    };
+
+    const topIndividualDonors = useMemo(() => {
+        return [...donations].sort((a, b) => b.amount - a.amount).slice(0, 5);
+    }, [donations]);
+    
+    const regionalLeaderboard = useMemo(() => {
+        const regions = donations.reduce((acc, curr) => {
+            acc[curr.region] = (acc[curr.region] || 0) + curr.amount;
+            return acc;
+        }, {});
+        return Object.entries(regions).sort((a, b) => b[1] - a[1]);
+    }, [donations]);
+
+    const departmentalLeaderboard = useMemo(() => {
+        const departments = donations.reduce((acc, curr) => {
+            acc[curr.department] = (acc[curr.department] || 0) + curr.amount;
+            return acc;
+        }, {});
+        return Object.entries(departments).sort((a, b) => b[1] - a[1]);
+    }, [donations]);
+
+    const totalRaised = useMemo(() => {
+        return donations.reduce((sum, d) => sum + d.amount, 0);
+    }, [donations]);
+
+    return (
+        <div className="bg-[#f2e5bc] min-h-screen font-['VT323',_monospace] text-[#3c3836] p-4 sm:p-6 md:p-8">
+            <style>
+                {`
+                @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+                body { font-family: 'VT323', monospace; }
+                `}
+            </style>
+            <div className="max-w-7xl mx-auto">
+                {/* --- Header --- */}
+                <header className="text-center mb-10">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png" alt="BITS Pilani Logo" className="w-24 h-24 mx-auto mb-4" />
+                    <h1 className="text-4xl md:text-5xl font-bold text-[#282828] tracking-wider">Class of 2000: Silver Jubilee Fund</h1>
+                    <p className="text-xl text-[#7c6f64] mt-2">25 Years of BITSian Brilliance. Let's Give Back.</p>
+                </header>
+
+                {/* --- Stats Bar --- */}
+                <div className="mb-10 p-4 bg-[#d5c4a1] border-2 border-dashed border-[#928374] rounded-lg text-center">
+                    <h2 className="text-3xl font-bold text-[#282828]">
+                        Total Raised: <span className="text-[#b57614] flex items-center justify-center"><IndianRupee size={28} />{totalRaised.toLocaleString('en-IN')}</span>
+                    </h2>
+                </div>
+
+
+                {/* --- Main Content Grid --- */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* --- Left Column: Form & Leaderboards --- */}
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* --- Donation Form --- */}
+                        <Card>
+                            <div className="flex justify-between items-center cursor-pointer" onClick={() => setShowForm(!showForm)}>
+                                <h2 className="text-3xl font-bold text-[#282828]">✍️ Join the Campaign</h2>
+                                <ChevronDown className={`w-8 h-8 transition-transform duration-300 ${showForm ? 'rotate-180' : ''}`} />
+                            </div>
+                            {showForm && (
+                                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="space-y-1">
+                                            <label className="text-lg">Full Name</label>
+                                            <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md focus:outline-none focus:ring-2 focus:ring-[#b57614]" placeholder="e.g., Anjali Mehta" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-lg">BITS ID</label>
+                                            <input type="text" name="bitsId" value={formData.bitsId} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md focus:outline-none focus:ring-2 focus:ring-[#b57614]" placeholder="e.g., 2000A7PS123P" />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-lg">Current Role & Company</label>
+                                        <input type="text" name="role" value={formData.role} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md focus:outline-none focus:ring-2 focus:ring-[#b57614]" placeholder="e.g., Product Manager, Microsoft" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-lg">Location (City, Country)</label>
+                                        <input type="text" name="location" value={formData.location} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md focus:outline-none focus:ring-2 focus:ring-[#b57614]" placeholder="e.g., Mumbai, India" />
+                                    </div>
+                                     <div className="space-y-1">
+                                        <label className="text-lg">Donation Amount (INR)</label>
+                                        <input type="number" name="amount" value={formData.amount} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md focus:outline-none focus:ring-2 focus:ring-[#b57614]" placeholder="Enter amount" />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="space-y-1">
+                                            <label className="text-lg">Allocate to Region</label>
+                                            <select name="region" value={formData.region} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md appearance-none">
+                                                <option>North</option><option>South</option><option>East</option><option>West</option><option>International</option>
+                                            </select>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-lg">Allocate to Department</label>
+                                            <select name="department" value={formData.department} onChange={handleInputChange} className="w-full p-2 bg-[#ebdbb2] border border-[#928374] rounded-md appearance-none">
+                                                <option>CS</option><option>EEE</option><option>Mech</option><option>Chem</option><option>Phoenix Core</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" className="w-full mt-4 bg-[#458588] text-white text-2xl font-bold py-3 rounded-lg hover:bg-[#076678] transition-colors shadow-[4px_4px_0px_#076678] hover:shadow-[2px_2px_0px_#076678] active:shadow-[0px_0px_0px_#076678] active:translate-x-1 active:translate-y-1">
+                                        Pledge My Support!
+                                    </button>
+                                </form>
+                            )}
+                        </Card>
+
+                        {/* --- Donation Feed --- */}
+                        <Card>
+                            <h2 className="text-3xl font-bold text-[#282828] mb-4">Recent Donations</h2>
+                            <div className="max-h-[400px] overflow-y-auto pr-2">
+                                <table className="w-full text-left">
+                                    <thead>
+                                        <tr className="border-b-2 border-[#928374]">
+                                            <th className="py-2 text-lg">Name</th>
+                                            <th className="py-2 text-lg">Amount (INR)</th>
+                                            <th className="py-2 text-lg">Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {donations.map(d => (
+                                            <tr key={d.id} className="border-b border-[#d5c4a1]">
+                                                <td className="py-3">{d.name}</td>
+                                                <td className="py-3 font-semibold text-[#b57614]">{d.amount.toLocaleString('en-IN')}</td>
+                                                <td className="py-3">{d.location}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </Card>
+                    </div>
+
+                    {/* --- Right Column: Leaderboards --- */}
+                    <div className="space-y-8">
+                        <Card>
+                            <h2 className="text-3xl font-bold text-[#282828] mb-4">🏆 Top 5 Donors</h2>
+                            <ul>
+                                {topIndividualDonors.map((donor, i) => (
+                                    <LeaderboardItem key={donor.id} rank={i + 1} name={donor.name} amount={donor.amount} icon={<Gift size={18} className="text-[#b16286]"/>} />
+                                ))}
+                            </ul>
+                        </Card>
+                        <Card>
+                            <h2 className="text-3xl font-bold text-[#282828] mb-4">🌍 Regional Champions</h2>
+                            <ul>
+                                {regionalLeaderboard.map(([region, total], i) => (
+                                    <LeaderboardItem key={region} rank={i + 1} name={region} amount={total} icon={<Users size={18} className="text-[#689d6a]"/>} />
+                                ))}
+                            </ul>
+                        </Card>
+                        <Card>
+                            <h2 className="text-3xl font-bold text-[#282828] mb-4">🏛️ Department Pride</h2>
+                            <ul>
+                                {departmentalLeaderboard.map(([dept, total], i) => (
+                                    <LeaderboardItem key={dept} rank={i + 1} name={dept} amount={total} icon={<Building size={18} className="text-[#458588]"/>} />
+                                ))}
+                            </ul>
+                        </Card>
+                    </div>
+                </div>
+
+                 {/* --- Footer --- */}
+                <footer className="text-center mt-12 pt-8 border-t-2 border-dashed border-[#928374]">
+                    <p className="text-lg text-[#7c6f64]">Made with ❤️ for the BITS Pilani Class of 2000.</p>
+                    <p className="text-md text-[#928374]">For any queries, contact the reunion committee.</p>
+                </footer>
+            </div>
+        </div>
+    );
+}
