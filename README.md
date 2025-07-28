@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Steps:
+1. Install [Node.js](https://nodejs.org/en/download).
+2. Open your terminal or command prompt and run the following commands (steps 3-6):
+3. `npx create-react-app bits-pilani-fundraiser`: Create your React app project folder
+4. `cd bits-pilani-fundraiser`: Navigate to the root
+5. `npm install lucide-react tailwindcss@3 postcss autoprefixer`: Install required dependencies
+6. `npx tailwindcss init -p`: Generate tailwind config files (i.e. pre-v4)
+7. Open tailwind.config.js and configure it to scan your source files for Tailwind classes: `content: [    "./src/**/*.{js,jsx,ts,tsx}",  ],`
+8. Open the src/index.css file, delete its contents, and add the following lines:
+`@tailwind base;
+@tailwind components;
+@tailwind utilities;`
+9. Open the src/App.js file in your new project. Replace its contents with src/App.js.retro or src/App.js.y2k or src/App.js.modern based on what you prefer.
+10. Run the Build Command: `npm run build`
+11. A new folder named "build" in your root directory contains the plain HTML, CSS, and JavaScript files that can be hosted on any web server. 
+
 ## Available Scripts
 
 In the project directory, you can run:
