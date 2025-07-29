@@ -1,6 +1,6 @@
 # Prototyped with Create React App
 
-These mockups were prototyped with [Create React App](https://github.com/facebook/create-react-app). Made with ❤️ for the BITS Pilani Class of 2000 by Najeed Khan and our awesome contributors:
+These mockups were prototyped with [Create React App](https://github.com/facebook/create-react-app). Made with ❤️ for the BITS Pilani Class of 2000 by Najeed Khan and our awesome contributors 🙌:
 
 <a href="https://github.com/najeed/bits-pilani-2k-fundraiser/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=najeed/bits-pilani-2k-fundraiser" />
