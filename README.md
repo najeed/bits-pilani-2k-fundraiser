@@ -19,7 +19,7 @@ Steps to build:
 `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
-9. Open the src/App.js file in your new project. Replace its contents with src/App.js.retro or src/App.js.y2k or src/App.js.modern based on what you prefer.
+9. Open the src/App.js file in your new project. Replace its contents with src/App.js.retro or src/App.js.y2k or src/App.js.modern or src/App.js.nostalgia based on what you prefer.
 10. Run the Build Command: `npm run build`
 11. A new folder named "build" in your root directory contains the plain HTML, CSS, and JavaScript files that can be hosted on any web server. 
 
