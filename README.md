@@ -1,8 +1,13 @@
 # Prototyped with Create React App
 
-These mockups were prototyped with [Create React App](https://github.com/facebook/create-react-app).
+These mockups were prototyped with [Create React App](https://github.com/facebook/create-react-app). Made with ❤️ for the BITS Pilani Class of 2000 by Najeed Khan and our awesome contributors 🙌:
 
-Steps:
+<a href="https://github.com/najeed/bits-pilani-2k-fundraiser/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=najeed/bits-pilani-2k-fundraiser" />
+</a>
+
+
+Steps to build:
 1. Install [Node.js](https://nodejs.org/en/download).
 2. Open your terminal or command prompt and run the following commands (steps 3-6):
 3. `npx create-react-app bits-pilani-fundraiser`: Create your React app project folder
@@ -14,7 +19,7 @@ Steps:
 `@tailwind base;
 @tailwind components;
 @tailwind utilities;`
-9. Open the src/App.js file in your new project. Replace its contents with src/App.js.retro or src/App.js.y2k or src/App.js.modern based on what you prefer.
+9. Open the src/App.js file in your new project. Replace its contents with src/App.js.retro or src/App.js.y2k or src/App.js.modern or src/App.js.nostalgia based on what you prefer.
 10. Run the Build Command: `npm run build`
 11. A new folder named "build" in your root directory contains the plain HTML, CSS, and JavaScript files that can be hosted on any web server. 
 
