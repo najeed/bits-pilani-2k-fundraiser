@@ -115,7 +115,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto">
                 <header className="text-center mb-12">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png" alt="BITS Pilani Logo" className="w-24 h-24 mx-auto mb-4 bg-white p-2 rounded-full shadow-lg" />
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#000080]">Class of 2000: Silver Jubilee Fund</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-[#000080]">Batch of 2000: Silver Jubilee Fund</h1>
                     <p className="text-xl text-[#a0522d] mt-3">25 Years of BITSian Brilliance. Let's Give Back.</p>
                 </header>
 
@@ -194,7 +194,7 @@ export default function App() {
                 </div>
 
                 <footer className="text-center mt-16 pt-8 border-t border-[#d2b48c]">
-                    <p className="text-sm text-[#a0522d]">Made with ❤️ for the BITS Pilani Class of 2000.</p>
+                    <p className="text-sm text-[#a0522d]">Made with ❤️ for the BITS Pilani Batch of 2000.</p>
                 </footer>
             </div>
         </div>

@@ -3,11 +3,11 @@ import { ChevronDown, Gift, IndianRupee, Users, Building, GraduationCap, FlaskCo
 
 // --- Mock Initial Data ---
 const initialDonations = [
-    { id: 1, name: 'Ravi Sharma', bitsId: '2000A7PS007P', role: 'VP of Engineering, Google', location: 'Mountain View, USA', amount: 250000, region: 'International', department: 'CS', cause: 'Technology & Labs' },
-    { id: 2, name: 'Priya Singh', bitsId: '2000B3A3123P', role: 'Founder, Ather Energy', location: 'Bengaluru, India', amount: 200000, region: 'South', department: 'EEE', cause: 'Student Scholarships' },
-    { id: 3, name: 'Amit Patel', bitsId: '2000A1PS234P', role: 'Director of Operations, Tata Motors', location: 'Pune, India', amount: 150000, region: 'West', department: 'Mech', cause: 'Campus Infrastructure' },
-    { id: 4, name: 'Sunita Reddy', bitsId: '2000A4PS456P', role: 'Lead Scientist, Dr. Reddy\'s Labs', location: 'Hyderabad, India', amount: 175000, region: 'South', department: 'Chem', cause: 'Faculty Development' },
-    { id: 5, name: 'Vikram Kumar', bitsId: '2000A7PS010P', role: 'Principal SDE, Amazon', location: 'Seattle, USA', amount: 225000, region: 'International', department: 'CS', cause: 'Technology & Labs' },
+    { id: 1, name: 'Ravi Sharma', bitsId: '2000A7PS007', role: 'VP of Engineering, Google', location: 'Mountain View, USA', amount: 250000, region: 'International', department: 'CS', cause: 'Technology & Labs' },
+    { id: 2, name: 'Priya Singh', bitsId: '2000B3A3123', role: 'Founder, Ather Energy', location: 'Bengaluru, India', amount: 200000, region: 'South', department: 'EEE', cause: 'Student Scholarships' },
+    { id: 3, name: 'Amit Patel', bitsId: '2000A1PS234', role: 'Director of Operations, Tata Motors', location: 'Pune, India', amount: 150000, region: 'West', department: 'Mech', cause: 'Campus Infrastructure' },
+    { id: 4, name: 'Sunita Reddy', bitsId: '2000A4PS456', role: 'Lead Scientist, Dr. Reddy\'s Labs', location: 'Hyderabad, India', amount: 175000, region: 'South', department: 'Chem', cause: 'Faculty Development' },
+    { id: 5, name: 'Vikram Kumar', bitsId: '2000A7PS010', role: 'Principal SDE, Amazon', location: 'Seattle, USA', amount: 225000, region: 'International', department: 'CS', cause: 'Technology & Labs' },
 ];
 
 const causes = [
@@ -121,7 +121,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto">
                 <header className="text-center mb-10 bg-[#000080] p-4 border-2 border-t-white border-l-white border-r-black border-b-black">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png" alt="BITS Pilani Logo" className="w-20 h-20 mx-auto mb-4 bg-white p-1" />
-                    <h1 className="text-3xl md:text-4xl font-bold text-white tracking-wider">Class of 2000: Silver Jubilee Fund</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-white tracking-wider">Batch of 2000: Silver Jubilee Fund</h1>
                     <p className="text-lg text-[#c0c0c0] mt-2">25 Years of BITSian Brilliance. Let's Give Back.</p>
                 </header>
 
@@ -190,7 +190,7 @@ export default function App() {
                 </div>
 
                 <footer className="text-center mt-12 pt-8">
-                    <p className="text-md text-[#c0c0c0]">Made with ❤️ for the BITS Pilani Class of 2000.</p>
+                    <p className="text-md text-[#c0c0c0]">Made with ❤️ for the BITS Pilani Batch of 2000.</p>
                 </footer>
             </div>
         </div>

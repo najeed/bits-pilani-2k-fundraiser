@@ -29,11 +29,11 @@ import { ChevronDown, Gift, MapPin, Briefcase, Hash, IndianRupee, Users, Buildin
 
 // --- Mock Initial Data ---
 const initialDonations = [
-    { id: 1, name: 'Ravi Sharma', bitsId: '2000A7PS007P', role: 'VP of Engineering, Google', location: 'Mountain View, USA', amount: 250000, region: 'International', department: 'CS' },
-    { id: 2, name: 'Priya Singh', bitsId: '2000B3A3123P', role: 'Founder, Ather Energy', location: 'Bengaluru, India', amount: 200000, region: 'South', department: 'EEE' },
-    { id: 3, name: 'Amit Patel', bitsId: '2000A1PS234P', role: 'Director of Operations, Tata Motors', location: 'Pune, India', amount: 150000, region: 'West', department: 'Mech' },
-    { id: 4, name: 'Sunita Reddy', bitsId: '2000A4PS456P', role: 'Lead Scientist, Dr. Reddy\'s Labs', location: 'Hyderabad, India', amount: 175000, region: 'South', department: 'Chem' },
-    { id: 5, name: 'Vikram Kumar', bitsId: '2000A7PS010P', role: 'Principal SDE, Amazon', location: 'Seattle, USA', amount: 225000, region: 'International', department: 'CS' },
+    { id: 1, name: 'Ravi Sharma', bitsId: '2000A7PS007', role: 'VP of Engineering, Google', location: 'Mountain View, USA', amount: 250000, region: 'International', department: 'CS' },
+    { id: 2, name: 'Priya Singh', bitsId: '2000B3A3123', role: 'Founder, Ather Energy', location: 'Bengaluru, India', amount: 200000, region: 'South', department: 'EEE' },
+    { id: 3, name: 'Amit Patel', bitsId: '2000A1PS234', role: 'Director of Operations, Tata Motors', location: 'Pune, India', amount: 150000, region: 'West', department: 'Mech' },
+    { id: 4, name: 'Sunita Reddy', bitsId: '2000A4PS456', role: 'Lead Scientist, Dr. Reddy\'s Labs', location: 'Hyderabad, India', amount: 175000, region: 'South', department: 'Chem' },
+    { id: 5, name: 'Vikram Kumar', bitsId: '2000A7PS010', role: 'Principal SDE, Amazon', location: 'Seattle, USA', amount: 225000, region: 'International', department: 'CS' },
 ];
 
 // --- Helper Components ---
@@ -126,7 +126,7 @@ export default function App() {
                 {/* --- Header --- */}
                 <header className="text-center mb-10">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png" alt="BITS Pilani Logo" className="w-24 h-24 mx-auto mb-4" />
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#282828] tracking-wider">Class of 2000: Silver Jubilee Fund</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-[#282828] tracking-wider">Batch of 2000: Silver Jubilee Fund</h1>
                     <p className="text-xl text-[#7c6f64] mt-2">25 Years of BITSian Brilliance. Let's Give Back.</p>
                 </header>
 
@@ -250,7 +250,7 @@ export default function App() {
 
                  {/* --- Footer --- */}
                 <footer className="text-center mt-12 pt-8 border-t-2 border-dashed border-[#928374]">
-                    <p className="text-lg text-[#7c6f64]">Made with ❤️ for the BITS Pilani Class of 2000.</p>
+                    <p className="text-lg text-[#7c6f64]">Made with ❤️ for the BITS Pilani Batch of 2000.</p>
                     <p className="text-md text-[#928374]">For any queries, contact the reunion committee.</p>
                 </footer>
             </div>
